@@ -65,7 +65,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ Gravatar::get(auth()->user()->email) }}" class="img-circle" alt="User Image">                </div>
+                    <img src="https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png" class="img-circle" alt="User Image">
+                </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
                 </div>
@@ -90,6 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.sidebar -->
     </aside>
+    <!-- Main Sidebar Container -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -100,42 +102,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </section>
         </div>
         <!-- /.content-header -->
-
-                    </div>
-                    <!-- /.col-md-6 -->
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="m-0">Featured</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
-
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <h5 class="m-0">Featured</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
-
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-md-6 -->
-                </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -148,14 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
+
 </div>
 <!-- ./wrapper -->
 

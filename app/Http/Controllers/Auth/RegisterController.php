@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\RegisterUser;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -41,6 +45,27 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $user->notify(new RegisterUser());
+
+        return redirect('/login')->with('success', 'Votre compte a bien été crée, vous devez confirmer votre compte.');
+    }
+
+    public function confirm($id, $token){
+       $user = User::where('id', $id)->where('confirmation_token', $token)->first();
+        if ($user) {
+            $user->update(['confirmation_token' => null]);
+            $this->guard()->login($user);
+            return redirect($this->redirectPath())->with('success', 'Votre compte a bien été confirmé');
+        } else {
+            return redirect('/login')->with('error', 'Ce lien ne semble plus valide');
+        }
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,8 +76,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -66,8 +92,11 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'firstname' => $data['firstname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'confirmation_token' => str_replace('/', '', bcrypt(Str::random(18
+            ))),
         ]);
     }
 }

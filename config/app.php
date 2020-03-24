@@ -25,6 +25,7 @@ return [
     | services the application utilizes. Set this in your ".env" file.
     |
     */
+    'host' => env('MAIL_HOST', 'localhost'),
 
     'env' => env('APP_ENV', 'production'),
 

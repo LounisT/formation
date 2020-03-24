@@ -6,7 +6,7 @@
 
         <ul>
             <img src="../resources/img/logo-petit.jpg" class="logo" alt="logo">
-            <li><a href="#">Connexion</a></li>
+            <li><a href="login">Connexion</a></li>
             <li><a href="#">Tableau de bord</a></li>
             <li><a href="#">La formation</a></li>
             <li><a href="#">Accueil</a></li>
@@ -19,7 +19,7 @@
 
 <section class="head">
 
-    <img src="" class=""">
+    <img src="" class="">
 
     <h1>Apprendre</h1>
     <h1 style="color: #ff6348;">simplement</h1>

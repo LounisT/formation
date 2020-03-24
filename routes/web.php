@@ -11,13 +11,19 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
 Route::prefix('admin')->namespace('Back')->group(function () {
     Route::name('admin')->get('/', 'AdminController@index');
 });
 
-Route::get('/', 'PageAccueil@index');
+Route::prefix('formation')->namespace('Formation')->group(function () {
+    Route::name('formation')->get('/', 'GererFormation@index');
+});
 
-Auth::routes();
+Route::get('/confirm/{id}/{token}', 'Auth\RegisterController@confirm');
+
+Route::get('/', 'PageAccueil@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
